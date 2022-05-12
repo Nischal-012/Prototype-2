@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private float horizontalInput;
     private float speed = 20f;
     private float xRange = 15;
+    public GameObject prefabObj;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,5 +27,9 @@ public class PlayerController : MonoBehaviour
 		}
         horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * Time.deltaTime * horizontalInput * speed);
+        if (Input.GetKeyDown(KeyCode.Space))
+		{
+            Instantiate(prefabObj,transform.position,prefabObj.transform.rotation);
+		}
     }
 }
